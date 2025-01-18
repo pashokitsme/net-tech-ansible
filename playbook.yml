@@ -1,0 +1,48 @@
+- name: Gather client infos
+  hosts: clients
+  vars:
+    output_dir: '/etc/ansible/IT-Planet/'
+    output_file: '{{ [output_dir, inventory_hostname] | path_join }}'
+    output_host: srv01
+
+  tasks:
+    - name: Gather local ip address
+      ansible.builtin.shell: hostname -i
+      register: ip_local
+
+    - name: Gather hostname
+      ansible.builtin.shell: hostname
+      register: hostname
+
+    - name: Gather os info
+      ansible.builtin.shell: cat /proc/version
+      register: os_info
+
+    - name: Gather disk usage
+      ansible.builtin.shell: df -H /
+      register: disk_usage
+
+    - name: Gather memory usage
+      ansible.builtin.shell: free -m
+      register: memory_usage
+
+    - name: Ensure directory exists
+      ansible.builtin.file:
+        path: '{{ output_dir }}'
+        state: directory
+      delegate_to: '{{ output_host }}'
+
+    - name: Save client infos
+      ansible.builtin.copy:
+        content: |
+          Hostname: {{ hostname.stdout }}
+          IP Address: {{ ip_local.stdout }}
+          OS: {{ os_info.stdout }}
+
+          Memory Usage: 
+          {{ memory_usage.stdout }}
+
+          Disk Usage: 
+          {{ disk_usage.stdout }}
+        dest: '{{ output_file }}'
+      delegate_to: '{{ output_host }}'
