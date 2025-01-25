@@ -16,9 +16,9 @@
 
 Я обычно не использую ansible, поэтому он не был установлен на моём компьютере. Предпочту использовать venv для этого.
 
-![Создание venv](./pics/1.png)
+![Создание venv](./pics/1.webp)
 
-![Установка ansible](./pics/3.png)
+![Установка ansible](./pics/3.webp)
 
 ## Dockerfile
 
@@ -99,7 +99,7 @@ networks:
 
 Использование: `docker compose up -d --build`.
 
-![](./pics/4.png)
+![](./pics/4.webp)
 
 
 ## Создание ansible inventory
@@ -108,13 +108,13 @@ networks:
 
 Выключена проверка хоста, почему - описано выше. Порты для ssh указаны такие, как в `docker-compose.yml`, как и ключи.
 
-![](./pics/6.png)
+![](./pics/6.webp)
 
 ### Тестовый пинг
 
 Использование: `uv run ansible -i inventory.yml -m ping all`.
 
-![](./pics/7.png)
+![](./pics/7.webp)
 
 
 ## Создание playbook
@@ -176,11 +176,10 @@ networks:
 
 Использование: `uv run ansible-playbook -i inventory.yml playbook.yml`.
 
-![](./pics/8.png)
+![](./pics/8.webp)
 
 ## Результат
 
 Директория `data` примонтирована к контейнеру `srv01` к директории `/etc/ansible/IT-Planet`.
 
-![](./pics/9.png)
-
+![](./pics/9.webp)
