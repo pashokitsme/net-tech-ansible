@@ -1,6 +1,10 @@
 # Предисловие
 
-Этот репозиторий - первый этап [braim.org/network-contest](https://challenge.braim.org/landing/network_contest)
+Репозиторий на GitHub: https://github.com/pashokitsme/net-tech-ansible
+
+Этот репозиторий, как и этот отчёт - первый этап [braim.org/network-contest](https://challenge.braim.org/landing/network_contest)
+
+Изначально оформлено в .md и предполагалось к просмотру в README репозитория.
 
 В ходе выполнения использовался пакетный (проектный) менеджер [uv](https://docs.astral.sh/uv/). Поэтому для вызова команд используется `uv run <command>`.
 
@@ -13,6 +17,7 @@
 Я обычно не использую ansible, поэтому он не был установлен на моём компьютере. Предпочту использовать venv для этого.
 
 ![Создание venv](./pics/1.png)
+
 ![Установка ansible](./pics/3.png)
 
 ## Dockerfile
